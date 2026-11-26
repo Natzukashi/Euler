@@ -1,17 +1,29 @@
+#include <stdbool.h>
 #include <stdio.h>
 
 int main() {
 
-    long long n = 600851475143;
-    long long ans = 0;
+    long n = 600851475143;
+    long a = 2;
 
-    for (long long i = n / 2; i > 1; i--) {
-        if (n % i == 0) {
-            ans = i;
+    while (true) {
+        bool flag = true;
+        while (a * a < n) {
+            if (n % a == 0) {
+                n = n / a;
+                flag = false;
+            }
+            a = a + 1;
+        }
+
+        if (flag) {
+            break;
+        } else {
+            a = 2;
         }
     }
 
-    printf("%lld", ans);
+    printf("%ld\n", n);
 
     return 0;
 }
